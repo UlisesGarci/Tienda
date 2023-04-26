@@ -5,7 +5,11 @@
  */
 package Vistas;
 
+import Controlador.ControladorCategoria;
 import Controlador.ControladorCliente;
+import Controlador.ControladorProductos;
+import Controlador.ControladorProveedores;
+import Controlador.ControladorTicket;
 import Modelo.ModeloUsuario;
 
 /**
@@ -33,6 +37,14 @@ public class Menu extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList();
         jButton1 = new javax.swing.JButton();
+        btnvisualizar1 = new javax.swing.JButton();
+        btnVisualizar3 = new javax.swing.JButton();
+        btnVisualizar4 = new javax.swing.JButton();
+        btnVizuaoizar4 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
         jList1.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -43,28 +55,102 @@ public class Menu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("FRMcliente");
+        jButton1.setText("Frm Cliente");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
+        btnvisualizar1.setText("Frm Categoria");
+        btnvisualizar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnvisualizar1ActionPerformed(evt);
+            }
+        });
+
+        btnVisualizar3.setText("Frm Productos");
+        btnVisualizar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisualizar3ActionPerformed(evt);
+            }
+        });
+
+        btnVisualizar4.setText("Frm Proveedores");
+        btnVisualizar4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVisualizar4ActionPerformed(evt);
+            }
+        });
+
+        btnVizuaoizar4.setText("Frm Ticket");
+        btnVizuaoizar4.setToolTipText("");
+        btnVizuaoizar4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVizuaoizar4ActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Verdana", 3, 18)); // NOI18N
+        jLabel3.setText("Menú");
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel9.setText("Abarrotes La Palma");
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 3, 10)); // NOI18N
+        jLabel10.setText("Huasca De Ocampo");
+
+        jLabel11.setIcon(new javax.swing.ImageIcon("C:\\Users\\gerar\\Downloads\\palma2.png")); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(155, 155, 155)
-                .addComponent(jButton1)
-                .addContainerGap(160, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(150, 150, 150)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnVisualizar4)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnVizuaoizar4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(btnVisualizar3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnvisualizar1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(183, 183, 183)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(32, 32, 32)
+                .addComponent(jLabel11)
+                .addContainerGap(87, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(124, 124, 124)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel10))
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32)
+                .addComponent(btnvisualizar1)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnVisualizar3)
+                .addGap(18, 18, 18)
+                .addComponent(btnVizuaoizar4)
+                .addGap(18, 18, 18)
+                .addComponent(btnVisualizar4)
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         pack();
@@ -78,6 +164,44 @@ public class Menu extends javax.swing.JFrame {
         ControladorCliente obj = new ControladorCliente(formularioC,Mo);
         formularioC.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnVizuaoizar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVizuaoizar4ActionPerformed
+ Ticket formularioD = new Ticket();
+        this.setVisible(false);
+        ModeloUsuario Mo = new ModeloUsuario();
+        ControladorTicket obj = new ControladorTicket(formularioD,Mo);
+        formularioD.setVisible(true);
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVizuaoizar4ActionPerformed
+
+    private void btnvisualizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnvisualizar1ActionPerformed
+
+ Categoria formularioA = new Categoria();
+        this.setVisible(false);
+        ModeloUsuario Mo = new ModeloUsuario();
+        ControladorCategoria obj = new ControladorCategoria(formularioA,Mo);
+        formularioA.setVisible(true);
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnvisualizar1ActionPerformed
+
+    private void btnVisualizar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizar3ActionPerformed
+ Productos formularioB = new Productos();
+        this.setVisible(false);
+        ModeloUsuario Mo = new ModeloUsuario();
+        ControladorProductos obj = new ControladorProductos(formularioB,Mo);
+        formularioB.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVisualizar3ActionPerformed
+
+    private void btnVisualizar4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVisualizar4ActionPerformed
+ Proveedores formularioE = new Proveedores();
+        this.setVisible(false);
+        ModeloUsuario Mo = new ModeloUsuario();
+        ControladorProveedores obj = new ControladorProveedores(formularioE,Mo);
+        formularioE.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVisualizar4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -115,7 +239,15 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnVisualizar3;
+    private javax.swing.JButton btnVisualizar4;
+    private javax.swing.JButton btnVizuaoizar4;
+    private javax.swing.JButton btnvisualizar1;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JList jList1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

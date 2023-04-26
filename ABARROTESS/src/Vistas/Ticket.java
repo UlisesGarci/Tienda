@@ -28,24 +28,26 @@ public class Ticket extends javax.swing.JFrame {
     private void initComponents() {
 
         txtidticket = new javax.swing.JTextField();
-        txtidclientefacturas = new javax.swing.JTextField();
-        txtproductofactura = new javax.swing.JTextField();
         txtfechafactura = new javax.swing.JTextField();
-        txtcantidadfactura = new javax.swing.JTextField();
         txtvalortotal = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        btninsertarfactura = new javax.swing.JButton();
-        btneditarfactura = new javax.swing.JButton();
-        btnconsultarfactura = new javax.swing.JButton();
-        btneliminarfactura = new javax.swing.JButton();
+        btnGuardarTicket = new javax.swing.JButton();
+        btnvisualizararticulos = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TablaTickett = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        txtefectivotickee = new javax.swing.JTextField();
+        txtcambioticket = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        btneditarticket = new javax.swing.JButton();
+        btneliminarticket = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        btnVolver5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,8 +57,6 @@ public class Ticket extends javax.swing.JFrame {
             }
         });
 
-        txtproductofactura.setToolTipText("");
-
         txtfechafactura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtfechafacturaActionPerformed(evt);
@@ -65,34 +65,28 @@ public class Ticket extends javax.swing.JFrame {
 
         jLabel1.setText("Id_tikcet");
 
-        jLabel2.setText("Id_Cliente");
-
-        jLabel3.setText("Producto");
-
         jLabel4.setText("Fecha");
 
-        jLabel5.setText("Cantidad");
-
-        jLabel6.setText("ValorTotal");
+        jLabel6.setText("Total:");
 
         jLabel7.setFont(new java.awt.Font("Sylfaen", 3, 36)); // NOI18N
         jLabel7.setText("Ticket");
 
-        btninsertarfactura.setText("Insertar");
-
-        btneditarfactura.setText("Editar");
-        btneditarfactura.setToolTipText("");
-
-        btnconsultarfactura.setText("Consultar");
-        btnconsultarfactura.addActionListener(new java.awt.event.ActionListener() {
+        btnGuardarTicket.setText("Guardar Ticket");
+        btnGuardarTicket.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnconsultarfacturaActionPerformed(evt);
+                btnGuardarTicketActionPerformed(evt);
             }
         });
 
-        btneliminarfactura.setText("Eliminar");
+        btnvisualizararticulos.setText("Visualizar Articulos");
+        btnvisualizararticulos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnvisualizararticulosActionPerformed(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TablaTickett.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -103,97 +97,144 @@ public class Ticket extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        TablaTickett.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablaTickettMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(TablaTickett);
+
+        jLabel2.setText("Efectivo");
+
+        jLabel8.setText("Cambio");
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
+        jLabel9.setText("Abarrotes La Palma");
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 3, 10)); // NOI18N
+        jLabel10.setText("Huasca De Ocampo");
+
+        btneditarticket.setText("Ediatr Ticket");
+
+        btneliminarticket.setText("Eliminar Ticket");
+
+        jLabel11.setIcon(new javax.swing.ImageIcon("C:\\Users\\gerar\\Downloads\\palma2.png")); // NOI18N
+
+        btnVolver5.setText("Cerrar X");
+        btnVolver5.setActionCommand("Cerrar");
+        btnVolver5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolver5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(81, 81, 81)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(91, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(81, 81, 81)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel1)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(txtidticket))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jLabel2)
-                                                .addComponent(jLabel4))
-                                            .addGap(18, 18, 18)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(txtfechafactura, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(txtidclientefacturas, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGap(46, 46, 46)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel5)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(txtcantidadfactura, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel3)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(txtproductofactura, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel6)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(txtvalortotal, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(150, 150, 150))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(27, 27, 27)
-                            .addComponent(btninsertarfactura)
-                            .addGap(54, 54, 54)
-                            .addComponent(btnconsultarfactura)
-                            .addGap(75, 75, 75)
-                            .addComponent(btneditarfactura)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btneliminarfactura)))
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtfechafactura)
+                    .addComponent(txtidticket, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtefectivotickee, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jLabel8)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtcambioticket, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(181, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(btnGuardarTicket)
+                .addGap(39, 39, 39)
+                .addComponent(btneditarticket)
+                .addGap(58, 58, 58)
+                .addComponent(btneliminarticket)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnvisualizararticulos)
+                .addGap(32, 32, 32))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(249, 249, 249)
-                        .addComponent(jLabel7)))
-                .addContainerGap(91, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel10))
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(31, 31, 31))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnVolver5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
+                .addComponent(jLabel11)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(159, 159, 159)
+                .addComponent(jLabel6)
+                .addGap(18, 18, 18)
+                .addComponent(txtvalortotal, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel7)
-                .addGap(82, 82, 82)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(btnVolver5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel10))
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtidticket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtcantidadfactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtidclientefacturas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(txtproductofactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtefectivotickee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtfechafactura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(90, 90, 90)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel8)
+                    .addComponent(txtcambioticket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtvalortotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btninsertarfactura)
-                    .addComponent(btnconsultarfactura)
-                    .addComponent(btneditarfactura)
-                    .addComponent(btneliminarfactura))
-                .addGap(58, 58, 58))
+                    .addComponent(txtvalortotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(54, 54, 54)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(170, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnvisualizararticulos)
+                            .addComponent(btnGuardarTicket)
+                            .addComponent(btneditarticket)
+                            .addComponent(btneliminarticket))
+                        .addGap(74, 74, 74))))
         );
 
         pack();
@@ -207,9 +248,36 @@ public class Ticket extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtfechafacturaActionPerformed
 
-    private void btnconsultarfacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnconsultarfacturaActionPerformed
+    private void btnvisualizararticulosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnvisualizararticulosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnconsultarfacturaActionPerformed
+    }//GEN-LAST:event_btnvisualizararticulosActionPerformed
+
+    private void btnGuardarTicketActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarTicketActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnGuardarTicketActionPerformed
+
+    private void TablaTickettMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaTickettMouseClicked
+
+int fila = TablaTickett.getSelectedRow();
+       txtidticket.setText(TablaTickett.getValueAt(fila, 0).toString());
+        txtfechafactura.setText(TablaTickett.getValueAt(fila, 1).toString());
+       txtefectivotickee.setText(TablaTickett.getValueAt(fila, 2).toString());
+        txtcambioticket.setText(TablaTickett.getValueAt(fila, 3).toString());
+        txtvalortotal.setText(TablaTickett.getValueAt(fila, 4).toString());
+       
+
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TablaTickettMouseClicked
+
+    private void btnVolver5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolver5ActionPerformed
+
+
+Menu frm= new Menu();
+            frm.setVisible(true);
+            this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVolver5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -238,6 +306,8 @@ public class Ticket extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -248,24 +318,26 @@ public class Ticket extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnconsultarfactura;
-    public javax.swing.JButton btneditarfactura;
-    public javax.swing.JButton btneliminarfactura;
-    public javax.swing.JButton btninsertarfactura;
+    public javax.swing.JTable TablaTickett;
+    public javax.swing.JButton btnGuardarTicket;
+    private javax.swing.JButton btnVolver5;
+    public javax.swing.JButton btneditarticket;
+    public javax.swing.JButton btneliminarticket;
+    public javax.swing.JButton btnvisualizararticulos;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    public javax.swing.JTextField txtcantidadfactura;
+    public javax.swing.JTextField txtcambioticket;
+    public javax.swing.JTextField txtefectivotickee;
     public javax.swing.JTextField txtfechafactura;
-    public javax.swing.JTextField txtidclientefacturas;
     public javax.swing.JTextField txtidticket;
-    public javax.swing.JTextField txtproductofactura;
     public javax.swing.JTextField txtvalortotal;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,112 +1,94 @@
-
-package controlador;
-
+ 
+package Controlador;
 
 import Modelo.ModeloUsuario;
 import Vistas.Proveedores;
-import Vistas.Productos;
-
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  *
- * @author lpzlu
+ * @author ulesg
  */
-public class ControladorProveedores implements ActionListener{
+public class ControladorProveedores implements ActionListener {
     
-   // private Proveedores _view;
-    private Productos _product;
-    private ModeloUsuario _model;
-    
+    private Proveedores _proveed;
+    private ModeloUsuario _modelproveed;
+    public ControladorProveedores(Proveedores proveed, ModeloUsuario modelproveed)
+    {
+      this._proveed=proveed;
+      this._modelproveed=modelproveed;
+      
+      this._proveed.btninsertarproveedores.addActionListener(this);
+      this._proveed.btneliminarprovedor.addActionListener(this);
+      this._proveed.btneditarprovedor.addActionListener(this);
+      this._proveed.btnconsultarproveedores.addActionListener(this);
+    }
     
     @Override
     public void actionPerformed(ActionEvent e) {
-    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String leyenda="";
         
-    String leyenda="";
-     
-     if(e.getSource()==_product.btninsertarproductos){
-         leyenda=_model.alta("producto","null,'"+_product.txtnombreproducto.getText()+",'"+  _product.txtdescripcionproducto.getText()+"',"+
-               "',"+  _product.txtprecioproducto.getText()+",'");
-                 
-           
-     JOptionPane.showMessageDialog(null, leyenda);//Se manda mensaje con el resultado de la consulta de inserción
-     
-     limpiar();//se limpian las cajas de texto
-     //agregar otros botones si se necesitan implementar
+         if(e.getSource() == _proveed.btninsertarproveedores){
+            leyenda = _modelproveed.AltasProveedores("proveedores","'" + _proveed.txtidproveedor.getText()+"','" + _proveed.txtnombreproveedor.getText() + "','" + _proveed.txtdireccionproveedores.getText() + "','" + _proveed.txtgmailprovedores.getText()+ "','" + _proveed.txttelefonoprovedores.getText()+"'");
+            JOptionPane.showMessageDialog(null, leyenda);
+            
+            limpiar();
+        }
+         if(e.getSource() ==_proveed.btneliminarprovedor){
+            leyenda = _modelproveed.eliminarProveedores("proveedores", "id_proveedor = " + _proveed.txtidproveedor.getText());
+            JOptionPane.showMessageDialog(null, leyenda);
+            
+            limpiar();
         
-     }
-      
-//     if(e.getSource()==_view.btneliminarprovedor){
-//           
-//     JOptionPane.showMessageDialog(null, leyenda);//Se manda mensaje con el resultado de la consulta de inserción
-//     
-//     limpiar();//se limpian las cajas de texto
-//         leyenda = _model.eliminar("proveedores", "id ="+ _view.txtidproveedor.getText());
-//                 
-//          // leyenda = administradorBD.borrarRegistro("TbUsuarios", "id = 3");
-//     //agregar otros botones si se necesitan implementar
-//        
-//     }
-//     
-//     if(e.getSource()==_view.btneditarprovedor){
-//            leyenda = _model.modificar("proveedores", "id_proveedor='"+_view.txtidproveedor.getText()+"' , nombre = '"+ _view.txtnombreproveedor.getText()+"' ,  direccion= '"+_view.txtdireccionproveedores.getText()+"' , email='"+_view.txtgmailprovedores.getText()+"'", "telefono= "+_view.txttelefonoprovedores.getText());
-//            JOptionPane.showMessageDialog(null, leyenda);
-//         
-//        limpiar();//se limpian las cajas de texto
-//     //agregar otros botones si se necesitan implementar
-//        
-//        }
-//     
-//      if(e.getSource()==_view.btnconsultarproveedores){
-//        
-//          String[]datos = new String[0];
-//          String consulta,info;
-//          DefaultTableModel tabla2 = new DefaultTableModel();
-//          tabla2.addColumn("id_proveedor");
-//          tabla2.addColumn("nombre");
-//          tabla2.addColumn("direccion");
-//          tabla2.addColumn("email");
-//          tabla2.addColumn("telefono");
-//         
-//         
-//          
-//          _view.tabla.setModel(tabla2);
-//          
-//          int i,j;
-//          
-//          consulta = _model.Consultar("proveedores","nombre,direccion,email,telefono","id_Proveedor>=1");
-//          datos = consulta.split(",");
-//          
-//          for(i=0; i<datos.length;i++){
-//              System.out.println(datos[i]);
-//          }
-//      
-    // }
-    // poner tdododododododdo
-    }
-    
-    public ControladorProveedores(Productos producto,ModeloUsuario model){
-        this._model=model;
-        this._product=producto;
+         }          
+               if(e.getSource() == _proveed.btneditarprovedor){
+            leyenda = _modelproveed.modificarProveedores("proveedores", "id_proveedor = '" +                
+                    _proveed.txtidproveedor.getText()+ "',  nombre = '"+
+                    _proveed.txtnombreproveedor.getText() + "', direccion = '" +
+                    _proveed.txtdireccionproveedores.getText() + "', email = '" + 
+                    _proveed.txtgmailprovedores.getText() + "', telefono = '" + 
+                    _proveed.txttelefonoprovedores.getText() + "'" ," id_proveedor= " + _proveed.txtidproveedor.getText());          
+            JOptionPane.showMessageDialog(null, leyenda);
+            
+        }
+               
+               if(e.getSource()==_proveed.btnconsultarproveedores){
+                   
+                   List<String> datos = new ArrayList<>();
+                   String consulta = _modelproveed.ConsultarProveedores("proveedores","id_proveedor,nombre,direccion,email,telefono","id_proveedor>=1");
+                   datos.addAll(Arrays.asList(consulta.split(",")));
+                   DefaultTableModel tabla = new DefaultTableModel();
+                   tabla.addColumn("id_proveedor");
+                   tabla.addColumn("nombre");
+                   tabla.addColumn("direccion");
+                   tabla.addColumn("email");
+                   tabla.addColumn("telefono");
+                   _proveed.TablaProveedoress.setModel(tabla);
+                   for (int i = 0; i < datos.size(); i += 5) {
+                       Object[] fila = new Object[5];
+                       for (int j = 0; j < 5; j++) {
+                           fila[j] = datos.get(i + j);
+                       }
+                       tabla.addRow(fila);
+               }
         
-        this._product.btninsertarproductos.addActionListener(this);
+               }
     }
-    
-    
-    public void iniciar(){
-        _product.setTitle("MVC_Visual");
-    }
-    
     public void limpiar(){
-        _product.txtnombreproducto.setText(null);
-        _product.txtdescripcionproducto.setText(null);
-        _product.txtprecioproducto.setText(null);
-       
-    }
-    
-    }
+        _proveed.txtidproveedor.setText(null);
+        _proveed.txtnombreproveedor.setText(null);
+        _proveed.txtdireccionproveedores.setText(null);
+        _proveed.txtgmailprovedores.setText(null);
+        _proveed.txttelefonoprovedores.setText(null);
+}
+}

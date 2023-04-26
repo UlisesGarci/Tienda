@@ -1,7 +1,6 @@
 package ABARROTES;
 
 
-import Vistas.Productos;
 import Modelo.ModeloUsuario;
 import Vistas.Cliente;
 
